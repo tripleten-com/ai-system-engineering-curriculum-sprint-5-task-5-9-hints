@@ -23,25 +23,25 @@ Then the verifier's structure follows. One part reads the live values: each cont
 
 ### `image_digest` mismatches though nothing changed
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Is the build context the commit, or the files on your disk?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Did a checkout, a merge or a restore rewrite any files on disk since you recorded?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 On Windows, compare the line endings Git reports for the working tree with what the commit holds. Which command lists both?
 
 </details>
 
-<details><summary>Move 4</summary>
+<details><summary>Hint 4</summary>
 
 Fix the line endings, rebuild under a scratch tag to confirm the ID matches, and only then use the candidate's tag again.
 
@@ -49,19 +49,19 @@ Fix the line endings, rebuild under a scratch tag to confirm the ID matches, and
 
 ### `commit_sha` always mismatches
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Which commit holds the record, and which commit does the record describe?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Can they ever be the same commit?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Ask Git whether the recorded commit is an ancestor of the head, and compare that answer instead.
 
@@ -69,19 +69,19 @@ Ask Git whether the recorded commit is an ancestor of the head, and compare that
 
 ### The failing case doesn't fail
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Did the containers actually change when you switched tags?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Does a restart move a container to a new image, or keep the one it runs?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 After every tag change, run `poe start` and `poe ready`, then run the verifier.
 
@@ -89,19 +89,19 @@ After every tag change, run `poe start` and `poe ready`, then run the verifier.
 
 ### The verifier says nothing is running
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Does the verifier start the stack, or only read what's running?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Which tag did you start the stack with?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Start the stack with the candidate's tag first, then verify.
 
@@ -109,19 +109,19 @@ Start the stack with the candidate's tag first, then verify.
 
 ### The exited initializer is missing from your container rows
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Does your listing include containers that have stopped?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Which flag makes the Compose listing show exited containers?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 List all first-party containers, running or exited, and read each one's image ID.
 

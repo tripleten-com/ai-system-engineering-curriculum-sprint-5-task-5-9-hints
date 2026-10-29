@@ -35,25 +35,25 @@ Two placements decide whether the record stays true:
 
 ### The recorded image ID never matches what `poe start` runs
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 How does your record command build the image: the way `poe start` does, or with a plain build of the Dockerfile?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Inspect the labels of both images. What does Compose add that a plain build doesn't?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Does any of those labels depend on the Compose project name?
 
 </details>
 
-<details><summary>Move 4</summary>
+<details><summary>Hint 4</summary>
 
 The approach: build through Compose, for the one service that has the build, with the tag set in the environment, under the same project name `poe start` uses. Then read the ID of the tagged image.
 
@@ -61,19 +61,19 @@ The approach: build through Compose, for the one service that has the build, wit
 
 ### Every tag you try is refused
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Image names are shared by every project on your machine's container engine. Which tags already exist there? List them.
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Is the tag you're trying the default tag from `compose.yaml`?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Choose a tag form that can't collide with an existing image and is never reused, and write the form down.
 
@@ -81,19 +81,19 @@ Choose a tag form that can't collide with an existing image and is never reused,
 
 ### Committing the record changes the image
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Is the record's directory part of the build context?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Read `.dockerignore`. Which directories does the build never see?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Add the record's directory there, commit that change, and record a new candidate.
 
@@ -101,19 +101,19 @@ Add the record's directory there, commit that change, and record a new candidate
 
 ### Adding the verifier after recording moves the tag
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Where do the verifier and its `poe` task live? Are those files inside the build context?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 What happens to the image when a file inside the build context changes?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Write the record command, the verifier and both tasks, commit them, and only then record.
 
@@ -121,19 +121,19 @@ Write the record command, the verifier and both tasks, commit them, and only the
 
 ### You can't find the schema head
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Open `migrations/versions/`. What does each file name as its revision, and as the revision it follows?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Which revision does no other file follow?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Read the files the way your command will, and check your answer against the newest migration by hand.
 
@@ -141,19 +141,19 @@ Read the files the way your command will, and check your answer against the newe
 
 ### The configuration digest differs between the record and the verifier
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Do both use the same files, in the same order?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Do both read the same bytes? A checkout can change line endings on disk.
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Write the rule down once and call the same code from both. Then decide which bytes the rule reads, knowing a checkout can change files on disk, and defend that choice in your note.
 

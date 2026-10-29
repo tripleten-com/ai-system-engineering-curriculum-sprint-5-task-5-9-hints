@@ -25,25 +25,25 @@ Put together: build once, point every first-party service at that one tag, never
 
 ### Services show the same tag but different image IDs
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 How many of your services have a `build` block?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 What does Compose do when several services build to the same tag?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 If only one service builds, how do the others get exactly that image instead of pulling or keeping an older one?
 
 </details>
 
-<details><summary>Move 4</summary>
+<details><summary>Hint 4</summary>
 
 The approach: keep the build on one service, give the other four the same image name and tag, mark them never to pull, and run `poe start` again.
 
@@ -51,19 +51,19 @@ The approach: keep the build on one service, give the other four the same image 
 
 ### A container runs code that isn't in the image
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Read each first-party service's volumes in the resolved configuration.
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Does any of them mount your source over the code the image carries?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Remove source mounts from every first-party service. Keep only the read-only scripts mount, because the image never carries that data.
 
@@ -71,19 +71,19 @@ Remove source mounts from every first-party service. Keep only the read-only scr
 
 ### A container starts something when it has no command
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Does your Dockerfile say nothing about a command, or does it explicitly say there's none?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 What does the base image run by default when nothing overrides it?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Declare an empty command in the Dockerfile, so only a service's own command can start anything.
 
@@ -91,19 +91,19 @@ Declare an empty command in the Dockerfile, so only a service's own command can 
 
 ### A service fails at import time
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Read the failing service's log. Which package can't it import?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Which dependency group holds that package? Does your one image install it?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Install every group any of the five services needs in the one image, then rebuild.
 
@@ -111,19 +111,19 @@ Install every group any of the five services needs in the one image, then rebuil
 
 ### The API won't start after the change
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 What runs before the API? Read `docker compose ps -a`, including exited containers.
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Did that service keep its command when you moved it to the shared image?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 The API and the worker take their commands from the last line of their old Dockerfiles. The initializer keeps the command it already had in `compose.yaml`. Restore whichever one went missing, and start again.
 
@@ -131,19 +131,19 @@ The API and the worker take their commands from the last line of their old Docke
 
 ### You're not sure which Dockerfiles to delete
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 After your change, which Dockerfiles does any service still build from? Search `compose.yaml` for each file name.
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Did you write a Dockerfile of your own for the agent server or the tool server in earlier Tasks?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Delete every Dockerfile nothing builds from any more, yours included, and commit the change together with the new Dockerfile.
 

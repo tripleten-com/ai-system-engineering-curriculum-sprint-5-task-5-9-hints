@@ -33,19 +33,19 @@ One more trap is in the evidence note. A long hexadecimal image ID written next 
 
 ### Your verifier tests need the container engine
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Which part of the verifier compares values, and which part gathers them?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Can you call the comparing part with a record and observed values you build in the test?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Put the calls to Git, Compose and the container engine behind one small interface, and give the tests a stand-in that returns fixed answers.
 
@@ -53,19 +53,19 @@ Put the calls to Git, Compose and the container engine behind one small interfac
 
 ### A break in your code ended up in the candidate image
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Which command did you run while the code was broken?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 Does that command build an image, and under which tag?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Use the command that runs only your tests for every break. If the candidate's image already moved, record a new candidate under a new tag.
 
@@ -73,19 +73,19 @@ Use the command that runs only your tests for every break. If the candidate's im
 
 ### The secret scan fails on your evidence note
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 What did you paste next to a service name such as `api`?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 How does Docker show an image ID in its short form?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Write short IDs in the note, and keep the full ones in the record and the verifier's own output.
 
@@ -93,19 +93,19 @@ Write short IDs in the note, and keep the full ones in the record and the verifi
 
 ### A fix after recording means a new candidate
 
-<details><summary>Move 1</summary>
+<details><summary>Hint 1</summary>
 
 Is the file you fixed inside the build context?
 
 </details>
 
-<details><summary>Move 2</summary>
+<details><summary>Hint 2</summary>
 
 If it is, does the recorded image still match what the next build produces?
 
 </details>
 
-<details><summary>Move 3</summary>
+<details><summary>Hint 3</summary>
 
 Commit the fix, record a new candidate under a new tag, and repeat the passing run from Step 3 before you cite it.
 
