@@ -96,7 +96,7 @@ Did you paste a full image ID next to a service name? Use Docker's short form in
 
 </details>
 
-<details><summary>`start` builds a new image under your candidate's tag</summary>
+<details><summary><code>start</code> builds a new image under your candidate's tag</summary>
 
 Which tag is set when CI or your machine runs `poe verify`? After you record, use a scratch tag for every run that builds.
 

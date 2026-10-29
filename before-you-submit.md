@@ -16,7 +16,7 @@ The basic checks confirm that your work is there. They don't judge whether it's 
 
 ## Can your tests fail when the code is wrong?
 
-- Did you let the record accept a seventh field and the verifier ignore one row once each, and see tests fail?
+- Did you let the record accept a seventh field, and make the verifier report `match` when the image IDs differ, once each, and see tests fail?
 - Did you keep the candidate's tag safe while you broke code?
 
 ## Did you state the limits of what your checks show?
